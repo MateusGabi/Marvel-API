@@ -1,0 +1,10 @@
+version: '3'
+services:
+  authentication:
+    build: ./backend_authentication
+    ports:
+     - "5000:5000"
+    volumes:
+     - ./backend_authentication:/code
+  redis:
+    image: "redis:alpine"
