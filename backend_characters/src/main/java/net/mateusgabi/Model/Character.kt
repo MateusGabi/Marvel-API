@@ -1,3 +1,5 @@
 package net.mateusgabi.Model
 
-class Character(val name: String, val age: Int)
+import java.io.Serializable
+
+class Character(val code: String, val message: String): Serializable

@@ -2,28 +2,31 @@ package net.mateusgabi.Controller
 
 import io.javalin.Context
 import net.mateusgabi.Model.Character
-import net.mateusgabi.MarvelService.RetrofitInitializer
+import net.mateusgabi.Service.RetrofitInitializer
+import net.mateusgabi.Service.AuthResponse
+import io.reactivex.subjects.Subject;
+import io.reactivex.Single
 
-class CharactersController {
+class CharactersController(val context: Context) {
 
   val retrofitInitializer = RetrofitInitializer()
   val marvelCharacterService = retrofitInitializer.marvelCharacterService()
 
-  fun getAll(): MutableList<Character> {
+  fun getAll(): Single<Character> {
 
-    var a = Character("Nome a", 1)
-    var b = Character("Nome a", 1)
-    var c = Character("Nome a", 1)
+    val auth: AuthResponse? = this.context.sessionAttribute("auth")
 
-    marvelCharacterService.list().subscribe {
-      result -> println(result)
-    }
+    val queries = HashMap<String, String>()
+    queries["ts"] = auth!!.timestamp
+    queries["apikey"] = auth!!.api_key
+    queries["hash"] = auth!!.hash
 
-    return mutableListOf<Character>(a, b, c)
+    return marvelCharacterService.list(queries)
+
   }
 
   fun getOne(id: String): Character {
-    return Character("Herói muito louco", 80)
+    return Character("Herói muito louco", "80")
   }
 
 }
