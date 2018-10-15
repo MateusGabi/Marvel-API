@@ -11,49 +11,51 @@ fun main(args: Array<String>) {
 
     app.before { ctx ->
       // get authentication data
-      RetrofitInitializer().authService().auth().subscribe {
+      RetrofitInitializer().authService().auth().subscribe({
         result -> ctx.sessionAttribute("auth", result)
+      })
+      {
+        err -> throw Exception("Erro de conexão com servidor de autenticação.")
       }
+    }
+
+    app.exception(Exception::class.java) { e, ctx ->
+      // handle general exceptions here
+      // will not trigger if more specific exception-mapper found
+      val s = HashMap<String, MutableList<String>>()
+      s["errors"] = mutableListOf<String>(e.message!!)
+      ctx.json(s).status(500)
     }
 
     app.get("/api/v1/characters") { ctx ->
 
       var auth: AuthResponse? = ctx.sessionAttribute("auth")
 
-      if (auth == null) {
-        ctx.status(401)
-      } else {
+      if (auth == null)
+        throw Exception("Dados de autenticação insuficiente.")
+
+
         var charactersController = CharactersController(ctx)
 
         charactersController.getAll().subscribe {
-          result ->
-                  ctx.json(result)
+          result -> ctx.json(result)
         }
-      }
+
     }
 
     app.get("/api/v1/characters/:id") { ctx ->
 
       var auth: AuthResponse? = ctx.sessionAttribute("auth")
 
-      if (auth == null) {
-        ctx.status(401)
-      } else {
+      if (auth == null)
+        throw Exception("Dados de autenticação insuficiente.")
 
-        var charactersController = CharactersController(ctx)
+      var charactersController = CharactersController(ctx)
 
-        var id = ctx.pathParam("id")
-        var character = charactersController.getOne(id)
+      var id = ctx.pathParam("id")
+      var character = charactersController.getOne(id)
 
-        ctx.json(character)
-      }
-    }
-
-    app.exception(com.jakewharton.retrofit2.adapter.rxjava2.HttpException::class.java) { e, ctx ->
-    // handle general exceptions here
-    // will not trigger if more specific exception-mapper found
-
-  ctx.result("sdskdks")
+      ctx.json(character)
     }
 
     app.start(7000)
