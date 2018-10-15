@@ -2,6 +2,8 @@ version: '3'
 services:
   authentication:
     build: ./backend_authentication
+    env_file:
+      - .env
     ports:
      - "5000:5000"
     volumes:
