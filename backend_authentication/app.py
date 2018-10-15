@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import time
 import math
 import hashlib
@@ -8,6 +9,10 @@ from flask import Flask
 from flask import Response
 from flask import json
 import time
+
+
+MARVEL_PUBLIC_KEY = os.environ.get('MARVEL_PUBLIC_KEY')
+MARVEL_PRIVATE_KEY = os.environ.get('MARVEL_PRIVATE_KEY')
 
 
 app = Flask(__name__)
@@ -71,18 +76,16 @@ def authentication():
         # create the md5 hash.
         count = math.ceil(time.time())
 
-    # TODO get from env file
-    privateKey = 'myprivate'
-
-    # TODO get from env file
-    apiKey = 'foo'
+    privateKey = MARVEL_PRIVATE_KEY
+    apiKey = MARVEL_PUBLIC_KEY
     count = str(count)
 
     hash = generate_hash(count, privateKey, apiKey)
 
     data = {
         'hash': hash,
-        'timestamp': count
+        'timestamp': count,
+        'api_key': apiKey
     }
 
     return api_response(data)
