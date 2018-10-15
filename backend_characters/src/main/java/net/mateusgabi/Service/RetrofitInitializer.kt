@@ -2,6 +2,7 @@ package net.mateusgabi.Service
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 import net.mateusgabi.Service.MarvelCharacterService
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 
@@ -22,7 +23,7 @@ class RetrofitInitializer {
                     .Builder()
                     .baseUrl("http://gateway.marvel.com/v1/public/")
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(JacksonConverterFactory.create())
                     .build()
   }
 

@@ -9,5 +9,5 @@ import net.mateusgabi.Model.Character
 interface MarvelCharacterService {
 
   @GET("characters")
-  fun list(@QueryMap queries: HashMap<String, String>): Single<Character>
+  fun list(@QueryMap queries: HashMap<String, String>): Single<CharacterDataWrapper>
 }
