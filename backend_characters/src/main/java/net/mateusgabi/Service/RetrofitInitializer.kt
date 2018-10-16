@@ -14,7 +14,7 @@ class RetrofitInitializer {
   init {
     authRetrofit = Retrofit
                 .Builder()
-                .baseUrl("http://localhost:5000/v1/")
+                .baseUrl("http://172.22.0.1:5000/v1/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
