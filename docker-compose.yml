@@ -10,3 +10,9 @@ services:
      - ./backend_authentication:/code
   redis:
     image: "redis:alpine"
+  characters:
+    build: ./backend_characters
+    ports:
+      - "7000:7000"
+    volumes:
+      - ./backend_characters:/code
