@@ -16,3 +16,9 @@ services:
       - "7000:7000"
     volumes:
       - ./backend_characters:/code
+  graphql:
+    build: ./backend_graphql
+    ports:
+      - "8081:8080"
+    volumes:
+      - ./backend_graphql:/code
