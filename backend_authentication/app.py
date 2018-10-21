@@ -65,7 +65,7 @@ def generate_hash(count, privateKey, publicKey):
 
     return m.hexdigest()
 
-@app.route('/v1/auth')
+@app.route('/api/v1/auth')
 def authentication():
     try:
         count = get_hit_count()

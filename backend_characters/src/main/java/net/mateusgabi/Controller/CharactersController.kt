@@ -10,7 +10,7 @@ import io.reactivex.Single
 
 class CharactersController(val context: Context) {
 
-  val retrofitInitializer = RetrofitInitializer()
+  val retrofitInitializer = RetrofitInitializer(context)
   val marvelCharacterService = retrofitInitializer.marvelCharacterService()
 
   fun getAll(): Single<CharacterDataWrapper> {

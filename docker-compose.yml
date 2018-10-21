@@ -8,6 +8,8 @@ services:
      - "5000:5000"
     volumes:
      - ./backend_authentication:/code
+    depends_on:
+      - redis
   redis:
     image: "redis:alpine"
   characters:
@@ -16,9 +18,15 @@ services:
       - "7000:7000"
     volumes:
       - ./backend_characters:/code
+    depends_on:
+      - authentication
   graphql:
     build: ./backend_graphql
+    env_file:
+      - .env
     ports:
       - "8081:8080"
     volumes:
       - ./backend_graphql:/code
+    depends_on:
+      - characters

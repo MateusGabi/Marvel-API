@@ -11,7 +11,7 @@ fun main(args: Array<String>) {
 
     app.before { ctx ->
       // get authentication data
-      RetrofitInitializer().authService().auth().subscribe({
+      RetrofitInitializer(ctx).authService().auth().subscribe({
         result -> ctx.sessionAttribute("auth", result)
       })
       {

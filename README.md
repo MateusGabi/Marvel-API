@@ -22,6 +22,9 @@ Encontra-se no diretório `backend_authentication`. Foi escrito em Python utiliz
 
 Encontra-se no diretório `backend_characters`. Foi escrito em Kotlin utilizando o framework Javalin.
 
+Problemas:
+- Eu não sei qual é o IP para acessar o Serviço de Autenticação.
+
 ### Serviço GraphQL
 
 Encontra-se no diretório `backend_graphql`. Foi escrito em JavaScript (ES6) utilizando GraphQL.
