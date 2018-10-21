@@ -13,13 +13,9 @@ class RetrofitInitializer(val context: Context) {
   var marvelRetrofit: Retrofit? = null
 
   init {
-    //
-    // é configurado o context ip como sendo a url base porque esse serviço
-    // só é consumido pelo graphql, que está na mesma máquina.
     authRetrofit = Retrofit
                 .Builder()
-                // TODO mudar baseUrl
-                .baseUrl("http://${this.context.ip()}:5000/api/v1/")
+                .baseUrl("http://authentication:5000/api/v1/")
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

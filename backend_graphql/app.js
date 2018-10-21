@@ -15,7 +15,7 @@ if (!GRAPHQL_SERVICE_KEY_1) {
 const app = express();
 
 const fetchData = () =>
-    fetch("http://172.18.0.1:7000/api/v1/characters")
+    fetch("http://characters:7000/api/v1/characters")
               .then(res => res.json())
               .then(res => {
                 return res.data.results.map(character => {
