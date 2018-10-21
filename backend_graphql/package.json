@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cacher": "https://github.com/MateusGabi/Cacher",
     "express": "^4.16.4",
     "express-graphql": "^0.6.12",
     "graphql": "^14.0.2",

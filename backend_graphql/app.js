@@ -3,6 +3,7 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const { graphql, buildSchema } = require('graphql');
 const fetch = require('node-fetch')
+const Cacher = require('cacher')
 
 const GRAPHQL_SERVICE_KEY_1 = process.env.GRAPHQL_SERVICE_KEY_1
 
@@ -13,30 +14,8 @@ if (!GRAPHQL_SERVICE_KEY_1) {
 
 const app = express();
 
-const schema = buildSchema(`
-  type Query {
-    characters: [Character]
-  }
-
-  type Thumbnail {
-    path: String
-    extension: String
-    complete: String
-  }
-
-  type Character {
-    id: String!
-    marvel_id: Int
-		name: String
-		description: String
-    thumbnail: Thumbnail
-  }
-`);
-
-const root = {
-  characters: () => {
-
-    return fetch("http://172.18.0.1:7000/api/v1/characters")
+const fetchData = () =>
+    fetch("http://172.18.0.1:7000/api/v1/characters")
               .then(res => res.json())
               .then(res => {
                 return res.data.results.map(character => {
@@ -60,7 +39,39 @@ const root = {
                 console.error(err);
                 return err
               })
+
+// cache dura 1h
+const cache = new Cacher(fetchData)
+
+const schema = buildSchema(`
+  type Query {
+    characters: [Character],
+    character(id: String): Character
   }
+
+  type Thumbnail {
+    path: String
+    extension: String
+    complete: String
+  }
+
+  type Character {
+    id: String!
+    marvel_id: Int
+		name: String
+		description: String
+    thumbnail: Thumbnail
+  }
+`);
+
+const root = {
+  characters: () => cache.getData(),
+  character: ({ id }) => cache.getData()
+                              .then(list => list.filter(c => id === c.id)[0])
+                              .catch(err => {
+                                console.error(err);
+                                return err
+                              })
 };
 
 app.use('/graphql', graphqlHTTP({
