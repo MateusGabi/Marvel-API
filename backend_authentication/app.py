@@ -8,7 +8,6 @@ import redis
 from flask import Flask
 from flask import Response
 from flask import json
-import time
 
 
 MARVEL_PUBLIC_KEY = os.environ.get('MARVEL_PUBLIC_KEY')
