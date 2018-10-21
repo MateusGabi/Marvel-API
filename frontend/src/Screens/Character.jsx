@@ -2,7 +2,7 @@ import React from 'react';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
-const CharacterScreen = ({match}) => (
+const CharacterScreen = ({match, history}) => (
   <Query
     variables={{ id:  match.params.id }}
     query={gql`
@@ -35,7 +35,12 @@ const CharacterScreen = ({match}) => (
       return (
         <div className="CharacterScreen__wrapper">
           <div className="CharacterScreen__firstLine">
-            <span>close</span>
+          <span onClick={() => history.goBack()}>
+          <i class="material-icons">
+            arrow_back
+          </i>
+          Back
+          </span>
           </div>
           <div className="CharacterScreen__content">
             <div className="CharacterScreen__content--text">

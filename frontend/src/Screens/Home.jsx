@@ -10,7 +10,9 @@ class Home extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h3>Você conhece todos os personagens?</h3>
-          <img src={arrowDown} className="arrow_down" alt="godown" />
+          <i class="material-icons arrow_down">
+            arrow_downward
+          </i>
         </header>
         <CharactersList />
       </div>
