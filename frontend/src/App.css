@@ -35,6 +35,57 @@
     animation: Growth infinite 5s linear;
 }
 
+.CharacterScreen__wrapper {
+  background: #22262a;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 2*30px);
+  padding: 30px;
+}
+
+.CharacterScreen__firstLine {
+  flex: 1;
+}
+
+.CharacterScreen__content {
+    display: flex;
+    flex: 10;
+}
+
+.CharacterScreen__content > div {
+  flex: 1;
+}
+
+.CharacterScreen__content--text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.CharacterScreen__content--text p {
+  margin-right: 30px;
+}
+
+.CharacterScreen__image {
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 25% 100%);
+    border-radius: 3px;
+    width: 100%;
+    height: 100%;
+    background: url(http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg);
+    background-clip: unset;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: inherit;
+    background-blend-mode: inherit;
+    background-size: cover;
+}
+
+.CharacterScreen__bottom {
+  flex: 1;
+}
+
 @keyframes Growth {
   0% {
       transform: scale(1);
