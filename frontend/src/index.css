@@ -1,3 +1,10 @@
+/**
+vermelho: #de4432
+branco: #fefefe
+background: #22262a;
+*/
+
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +13,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.character-list {
+  background: #181618;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.character-box {
+  height: 346px;
+  width: 195px;
+  margin: 0.5em;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.character-image {
+  transform: scale(0.95);
+  position: relative;
+  top: -346px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  transition: .5s;
+  border-radius: 5px;
+}
+
+.character-name {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  background: #1816188c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.character-name h2 {
+  color: #fafafa;
+  padding: 2em;
+  transition: .5s;
+}
+
+.character-box:hover .character-image {
+  transform: scale(1)
+}
+
+.character-box:hover .character-name h2 {
+  transform: scale(0.99)
 }
