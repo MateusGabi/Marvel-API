@@ -8,7 +8,7 @@ Use a API Oficial: https://developer.marvel.com
 
 ## Arquitetura
 
-O projeto possui 3 partes:
+O projeto possui 4 partes:
   - Serviço de Autenticação;
   - Serviço de Personagens;
   - Serviço GraphQL; e
@@ -21,9 +21,6 @@ Encontra-se no diretório `backend_authentication`. Foi escrito em Python utiliz
 ### Serviço de Personagens
 
 Encontra-se no diretório `backend_characters`. Foi escrito em Kotlin utilizando o framework Javalin.
-
-Problemas:
-- Eu não sei qual é o IP para acessar o Serviço de Autenticação.
 
 ### Serviço GraphQL
 
