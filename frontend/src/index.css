@@ -22,10 +22,11 @@ code {
 }
 
 .character-list {
+  padding-top: 30px;
   background: #181618;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .character-box {

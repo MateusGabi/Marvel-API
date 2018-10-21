@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './marvel.svg';
+import arrowDown from './arrow-down.svg';
 import './App.css';
 import CharactersList from './components/CharactersList'
 
@@ -9,17 +10,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <h3>Você conhece todos os personagens?</h3>
+          <img src={arrowDown} className="arrow_down" alt="godown" />
         </header>
         <CharactersList />
       </div>
