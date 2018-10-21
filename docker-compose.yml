@@ -30,3 +30,11 @@ services:
       - ./backend_graphql:/code
     depends_on:
       - characters
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:3000"
+    volumes:
+      - ./frontend:/code
+    depends_on:
+      - graphql
