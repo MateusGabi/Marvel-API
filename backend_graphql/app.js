@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const express = require('express');
+const cors = require('cors')
 const graphqlHTTP = require('express-graphql');
 const { graphql, buildSchema } = require('graphql');
 const fetch = require('node-fetch')
@@ -13,6 +14,8 @@ if (!GRAPHQL_SERVICE_KEY_1) {
 }
 
 const app = express();
+
+app.use(cors());
 
 const fetchData = () =>
     fetch("http://characters:7000/api/v1/characters")
