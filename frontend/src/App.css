@@ -53,6 +53,16 @@ a {
   flex: 1;
 }
 
+.CharacterScreen__firstLine span {
+  display: flex;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.CharacterScreen__firstLine i {
+  margin-right: 20px;
+}
+
 .CharacterScreen__content {
     display: flex;
     flex: 10;
