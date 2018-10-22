@@ -54,6 +54,12 @@ code {
   z-index: 1;
   transition: .5s;
   border-radius: 5px;
+  background-clip: unset;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  background-blend-mode: inherit;
+  background-size: cover;
 }
 
 .character-name {
