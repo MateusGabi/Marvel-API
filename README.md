@@ -8,6 +8,8 @@ Use a API Oficial: https://developer.marvel.com
 
 ## Arquitetura
 
+![aly](Arquitetura.svg)
+
 O projeto possui 4 partes:
   - Serviço de Autenticação;
   - Serviço de Personagens;
