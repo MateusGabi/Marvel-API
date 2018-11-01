@@ -30,7 +30,7 @@ Encontra-se no diretório `backend_graphql`. Foi escrito em JavaScript (ES6) uti
 
 ### Frontend
 
-Encontra-se no diretório `frontend`. Foi escrito em JavaScript (ES6) utilizando o framework ReactJS. Ele se comunica apenas com o BFF e é constituido apenas pelo corpo.
+Encontra-se no diretório `frontend`. Foi escrito em JavaScript (ES6) utilizando o framework ReactJS. Ele se comunica apenas com o BFF.
 
 ## Execute o projeto
 
