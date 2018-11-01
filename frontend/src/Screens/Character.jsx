@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './../marvel.svg';
 import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
@@ -21,7 +22,16 @@ const CharacterScreen = ({match, history}) => (
   {
     ({ loading, error, data }) => {
       if (loading) {
-        return <div>carregando...</div>
+        return (
+          <div className="loading">
+            <div class="box">
+              <div class="layer bump"></div>
+              <div class="layer bump"></div>
+              
+              <div class="layer" id="profile"></div>
+            </div>
+          </div>
+        )
       }
 
       if (error) {

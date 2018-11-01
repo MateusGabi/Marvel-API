@@ -15,7 +15,7 @@ a {
 .App-header {
   background-color: #22262a;
   border-bottom: 1px solid #393939;
-  min-height: calc(100vh - 35px);
+  min-height: calc(80vh - 35px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,6 +97,81 @@ a {
 
 .CharacterScreen__bottom {
   flex: 1;
+}
+
+.loading {
+  background: #22262a;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-log.is-loading {
+  animation: Growth 5s infinite;
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+}
+
+#profile {
+  background: url(https://scontent.fbsb9-1.fna.fbcdn.net/v/t1.0-9/40685551_2349472841770472_4655518801087954944_n.jpg);
+  background-size: cover;
+  z-index: 1;
+}
+
+.layer {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.bump {
+  border: 1px solid #00000045;
+  background: #0000001a;
+}
+
+.bump:nth-child(1) {
+  animation: leaves-in 2s ease-in-out infinite alternate;
+}
+
+.bump:nth-child(2) {
+  animation: leaves-out 2.75s ease-in-out infinite alternate;
+}
+
+@keyframes leaves-in {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(2);
+      opacity: 1;
+    }
+}
+
+@keyframes leaves-out {
+    0% {
+      transform: scale(2);
+      opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+      opacity: 0;
+    }
+}
+
+@keyframes heart-beat {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(2)
+  }
 }
 
 @keyframes Growth {
